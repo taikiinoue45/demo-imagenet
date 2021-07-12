@@ -1,28 +1,13 @@
 version: "3"
 
-volumes:
-  vue-cli-node-volume:
-
 services:
-
-  frontend:
-    build:
-      context: .
-      dockerfile: ./compose/local/frontend/Dockerfile
-    image: local_frontend
-    container_name: local_frontend
-    volumes:
-      - vue-cli-node-volume:/app/node_modules
-      - ./frontend:/app
-    ports:
-      - 8080:8080
 
   backend:
     build:
       context: .
-      dockerfile: ./compose/local/backend/Dockerfile
-    image: local_backend
-    container_name: local_backend
+      dockerfile: ./Dockerfile
+    image: django
+    container_name: django
     stdin_open: true
     volumes:
       - .:/app
